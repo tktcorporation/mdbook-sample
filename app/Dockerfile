@@ -8,4 +8,4 @@ COPY ./book.toml .
 
 RUN cargo install mdbook
 
-CMD [ "/bin/sh", "-c", "mdbook serve" ]
+CMD [ "/bin/sh", "-c", "mdbook serve --hostname '0.0.0.0'" ]
