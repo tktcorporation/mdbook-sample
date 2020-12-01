@@ -5,4 +5,4 @@ multilingual = false
 src = "src"
 
 [preprocessor.plantuml]
-plantuml-cmd="java -jar /java/plantuml.jar"
+plantuml-cmd="java -jar /usr/share/plantuml/plantuml.jar"

@@ -1,16 +1,22 @@
-FROM rust:alpine3.12
+# for alpine
 
-RUN apk add alpine-sdk
-# RUN pkgconfig openssl
+# FROM rust:alpine3.12
 
-ENV PLANTUML_VERSION 1.2020.14
-ENV LANG en_US.UTF-8
-RUN apk add --no-cache openjdk11 graphviz ttf-droid ttf-droid-nonlatin curl \
-    && mkdir /java \
-    && curl -L https://sourceforge.net/projects/plantuml/files/plantuml.${PLANTUML_VERSION}.jar/download -o /java/plantuml.jar \
-    && apk del curl
+# RUN apk add alpine-sdk
 
-RUN java -jar /java/plantuml.jar -h
+# ENV PLANTUML_VERSION 1.2020.14
+# ENV LANG en_US.UTF-8
+# RUN apk add --no-cache openjdk11 graphviz ttf-droid ttf-droid-nonlatin curl \
+#     && mkdir /java \
+#     && curl -L https://sourceforge.net/projects/plantuml/files/plantuml.${PLANTUML_VERSION}.jar/download -o /java/plantuml.jar \
+#     && apk del curl
+
+FROM rust:1.48-buster
+
+RUN apt-get update
+RUN apt-get install -y build-essential openjdk-11-jre graphviz plantuml
+
+RUN java -jar /usr/share/plantuml/plantuml.jar -h
 
 WORKDIR /app
 
