@@ -24,6 +24,9 @@ jobs:
         with:
           mdbook-version: "0.4.4"
 
+      - name: install mdbook plantuml
+        run: cargo install mdbook-plantuml --no-default-features
+
       - run: mdbook build
 
       - name: Deploy
